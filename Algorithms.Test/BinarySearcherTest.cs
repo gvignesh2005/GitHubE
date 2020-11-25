@@ -80,5 +80,5 @@ namespace Alogrithms.Test
 			Assert.ThrowsException<System.NullReferenceException>(() => new BinarySearcher<int>(list, Comparer<int>.Default));
 		}
 
-   }
+	}
 }

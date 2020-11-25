@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DB5456B5-7C70-4F22-AD9C-EB7BC954040F}</ProjectGuid>
+    <ProjectGuid>{97B7DB39-FA7D-4579-A9AD-950B8948E8A4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Alogrithms.Test</RootNamespace>
-    <AssemblyName>Alogrithms.Test</AssemblyName>
+    <RootNamespace>Algorithms.Test</RootNamespace>
+    <AssemblyName>Algorithms.Test</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -59,6 +59,10 @@
     <ProjectReference Include="..\Algorithms\Algorithms.csproj">
       <Project>{c02edb2c-c00d-4641-91aa-35f294900cf1}</Project>
       <Name>Algorithms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataStructures\DataStructures.csproj">
+      <Project>{43283b13-0d8e-44a0-a7c9-afb659f83609}</Project>
+      <Name>DataStructures</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

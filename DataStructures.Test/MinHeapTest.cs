@@ -6,10 +6,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace UnitTest.DataStructuresTests
 {
 	[TestClass]
-	public  class MinHeapTest
+	public class MinHeapTest
 	{
 		[TestMethod]
-		public  void CheckOrderInHeap_RandomOrder_ReturnsTrue()
+		public void CheckOrderInHeap_RandomOrder_ReturnsTrue()
 		{
 			BinaryMinHeap<long> minHeap = new BinaryMinHeap<long>(Comparer<long>.Default);
 
@@ -29,7 +29,7 @@ namespace UnitTest.DataStructuresTests
 		}
 
 		[TestMethod]
-		public  void CheckOrderInHeap_AscendingOrder_ReturnsTrue()
+		public void CheckOrderInHeap_AscendingOrder_ReturnsTrue()
 		{
 			BinaryMinHeap<long> minHeap = new BinaryMinHeap<long>(Comparer<long>.Default);
 
@@ -49,7 +49,7 @@ namespace UnitTest.DataStructuresTests
 		}
 
 		[TestMethod]
-		public  void CheckOrderInHeap_DecreasingOrder_ReturnsTrue()
+		public void CheckOrderInHeap_DecreasingOrder_ReturnsTrue()
 		{
 			BinaryMinHeap<long> minHeap = new BinaryMinHeap<long>(Comparer<long>.Default);
 
@@ -68,7 +68,7 @@ namespace UnitTest.DataStructuresTests
 			Assert.IsTrue(isRightOrder);
 		}
 
-		public  bool IsRightOrderInHeap<T>(BinaryMinHeap<T> binaryMinHeap) where T : IComparable<T>
+		public bool IsRightOrderInHeap<T>(BinaryMinHeap<T> binaryMinHeap) where T : IComparable<T>
 		{
 			var array = binaryMinHeap.ToArray();
 
@@ -92,7 +92,7 @@ namespace UnitTest.DataStructuresTests
 		}
 	}
 
-	public  class MaxHeapTest
+	public class MaxHeapTest
 	{
 		[TestMethod]
 		public static void CheckOrderInHeap_RandomOrder_ReturnsTrue()
@@ -115,7 +115,7 @@ namespace UnitTest.DataStructuresTests
 		}
 
 		[TestMethod]
-		public  void CheckOrderInHeap_AscendingOrder_ReturnsTrue()
+		public void CheckOrderInHeap_AscendingOrder_ReturnsTrue()
 		{
 			BinaryMaxHeap<long> maxHeap = new BinaryMaxHeap<long>(Comparer<long>.Default);
 

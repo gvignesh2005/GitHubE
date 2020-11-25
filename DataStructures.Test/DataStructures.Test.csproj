@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F1F00F98-6DAA-4D62-95BA-9C5C9BDEDEEE}</ProjectGuid>
+    <ProjectGuid>{638B4686-1007-4CA8-BA06-3E317917B8D7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DataStructures.Test</RootNamespace>
@@ -49,8 +49,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BinaryHeapsTest.cs" />
-    <Compile Include="GraphsTopologicalSortTest.cs" />
+    <Compile Include="GraphsTopologicalSorterTest.cs" />
+    <Compile Include="MinHeapTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

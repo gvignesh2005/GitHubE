@@ -13,7 +13,7 @@ namespace UnitTest.AlgorithmsTests
 	public class GraphsTopologicalSorterTest
 	{
 		[TestMethod]
-		public  void DoTest()
+		public void DoTest()
 		{
 			var V01 = new string[] { "A", "B", "C", "D", "E", "X" };
 			var DAG01 = new DirectedSparseGraph<string>();
