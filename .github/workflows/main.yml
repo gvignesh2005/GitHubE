@@ -32,9 +32,6 @@ jobs:
       - name: build SampleApp
         run: msbuild SampleApp
       
-      - name: Restore the package
-        run: nuget restore SampleApp.sln
-      
       - name: build SampleApp.Test
         run: msbuild SampleApp.Test
 
@@ -44,11 +41,8 @@ jobs:
       - name: build DataStructures
         run: msbuild DataStructures
 
-      - name: Restore packages for Algorithms
-        run: nuget restore Algorithms.sln
-
-      - name: Restore packages for DataStructures
-        run: nuget restore DataStructures.sln
+      - name: Restore the package
+        run: nuget restore SampleApp.sln
       
       - name: Setup VSTest Path
         uses: darenm/Setup-VSTest@v1
