@@ -31,3 +31,9 @@ jobs:
       
       - name: build SampleApp
         run: msbuild SampleApp
+      
+      - name: build SampleApp.Test
+        run: msbuild SampleApp.Test
+      
+      - name: Run the Unit Tests
+        run: vstest.console SampleApp.Test
