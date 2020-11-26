@@ -35,32 +35,8 @@ jobs:
       - name: build SampleApp solution
         run: msbuild SampleApp.sln
      
-    #  - name: build SampleApp
-    #    run: msbuild SampleApp
-       
-    #  - name: build Algorithms
-    #    run: msbuild Algorithms
-
-   #   - name: build DataStructures
-   #     run: msbuild DataStructures
-      
-   #    - name: build SampleApp.Test
-   #      run: msbuild SampleApp.Test  
-      
-   #   - name: build Algorithms.Test
-   #     run: msbuild Algorithms.Test 
-      
-   #   - name: build DataStructures.Test
-   #     run: msbuild DataStructures.Test
-
       - name: Setup VSTest Path
         uses: darenm/Setup-VSTest@v1
       
       - name: Run the Unit Tests for SampleApp
-        run: vstest.console.exe SampleApp.Test\bin\Debug\SampleApp.Test.dll
-
-      - name: Run the Unit Tests for Algorithms
-        run: vstest.console.exe Algorithms.Test\bin\Debug\Algorithms.Test.dll  
-
-      - name: Run the Unit Tests for DataStructures
-        run: vstest.console.exe DataStructures.Test\bin\Debug\DataStructures.Test.dll    
+        run: vstest.console.exe SampleApp.Test\bin\Debug\SampleApp.Test.dll Algorithms.Test\bin\Debug\Algorithms.Test.dll DataStructures.Test\bin\Debug\DataStructures.Test.dll /Parallel
