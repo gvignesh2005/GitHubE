@@ -57,7 +57,7 @@ jobs:
         run: vstest.console.exe SampleApp.Test\bin\Debug\SampleApp.Test.dll
 
       - name: Run the Unit Tests for Algorithms
-        run: vstest.console.exe Algorithms\bin\Debug\Algorithms.dll  
+        run: vstest.console.exe Algorithms.Test\bin\Debug\Algorithms.Test.dll  
 
       - name: Run the Unit Tests for DataStructures
-        run: vstest.console.exe Algorithms\bin\Debug\DataStructures.dll    
+        run: vstest.console.exe DataStructures.Test\bin\Debug\DataStructures.Test.dll    
