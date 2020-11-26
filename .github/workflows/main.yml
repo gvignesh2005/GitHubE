@@ -29,6 +29,9 @@ jobs:
       - name: setup-msbuild
         uses: microsoft/setup-msbuild@v1
       
+      - name: Restore all nuget packages for the solution
+        run: nuget restore SampleApp.sln
+        
       - name: build SampleApp
         run: msbuild SampleApp
       
@@ -37,9 +40,6 @@ jobs:
 
       - name: build DataStructures
         run: msbuild DataStructures
-
-      - name: Restore the package
-        run: nuget restore SampleApp.sln
       
       - name: build SampleApp.Test
         run: msbuild SampleApp.Test  
