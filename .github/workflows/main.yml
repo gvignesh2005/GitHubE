@@ -43,6 +43,12 @@ jobs:
       
       - name: build SampleApp.Test
         run: msbuild SampleApp.Test  
+      
+      - name: build Algorithms.Test
+        run: msbuild Algorithms.Test 
+      
+      - name: build DataStructures.Test
+        run: msbuild DataStructures.Test
 
       - name: Setup VSTest Path
         uses: darenm/Setup-VSTest@v1
