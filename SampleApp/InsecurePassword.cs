@@ -22,7 +22,7 @@ public class InsecurePassword
 	public string badpasswordcomparison()
 	{
 		string password = "password";
-
+		//bad comparison
 		if (password == "password")
 		{
 			return password;
