@@ -12,4 +12,22 @@ public class InsecurePassword
 
 		return password;
 	}
+
+	public void badpassword()
+	{
+		Random gen = new Random();
+		string password = "password" + gen.Next();
+	}
+
+	public string badpasswordcomparison()
+	{
+		string password = "password";
+
+		if (password == "password")
+		{
+			return password;
+		}
+
+		return password;
+	}
 }
