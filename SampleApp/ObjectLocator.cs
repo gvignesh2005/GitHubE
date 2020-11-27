@@ -27,5 +27,33 @@ namespace SampleApp
 		     string password = "password";		
 			
 		}
+		
+		public void vulnerablecode()
+		{
+		     int i=1;
+		     int j=2;
+		     int k=3;
+		     int l=4;
+			
+		   if (i >1)
+		   {
+		       if (j > 2)
+		       {
+			   
+			  if (k > 3)
+			  {
+				
+				if (l > 4)
+				{
+				Console.Write("in loop");	
+				}
+			  }
+			       
+			       
+		       }
+			   
+		   }
+			
+		}
 	}
 }
