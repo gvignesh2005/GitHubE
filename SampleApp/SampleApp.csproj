@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="Calculator.cs" />
     <Compile Include="ObjectLocator.cs" />
-    <Compile Include="HandleEvents.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
