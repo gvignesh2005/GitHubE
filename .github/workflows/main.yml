@@ -31,14 +31,14 @@ jobs:
       - name: Setup msbuild
         uses: microsoft/setup-msbuild@v1
       
+      - name: Setup VSTest Path
+        uses: darenm/Setup-VSTest@v1
+      
       - name: Restore all nuget packages for the solution
         run: nuget restore SampleApp.sln
       
       - name: Build SampleApp solution
         run: msbuild SampleApp.sln
      
-      - name: Setup VSTest Path
-        uses: darenm/Setup-VSTest@v1
-      
       - name: Run all Unit Tests for SampleApp
         run: vstest.console.exe SampleApp.Test\bin\Debug\SampleApp.Test.dll Algorithms.Test\bin\Debug\Algorithms.Test.dll DataStructures.Test\bin\Debug\DataStructures.Test.dll /Parallel /EnableCodeCoverage
