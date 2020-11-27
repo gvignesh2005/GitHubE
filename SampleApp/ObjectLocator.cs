@@ -20,5 +20,12 @@ namespace SampleApp
 			return   Newtonsoft.Json.JsonConvert.SerializeObject(p);
 		
 		}
+		
+		public void badcode()
+		{
+		     string username = "username";
+		     string password = "password";		
+			
+		}
 	}
 }
