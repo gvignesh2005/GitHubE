@@ -47,6 +47,7 @@
     <Compile Include="Calculator.cs" />
     <Compile Include="ObjectLocator.cs" />
     <Compile Include="Person.cs" />
+    <Compile Include="InsecurePassword.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
