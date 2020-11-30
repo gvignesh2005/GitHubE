@@ -45,3 +45,6 @@ jobs:
 
       - name: Create nuget package for SampleApp
         run: nuget pack SampleApp 
+      
+      - name: Publish the package
+        run: dotnet nuget push *.nupkg --source github
