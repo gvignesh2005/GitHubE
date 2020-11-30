@@ -41,7 +41,7 @@ jobs:
         run: msbuild SampleApp.sln
      
       - name: Run all Unit Tests for SampleApp
-        run: vstest.console.exe SampleApp.Test\bin\Debug\SampleApp.Test.dll Algorithms.Test\bin\Debug\Algorithms.Test.dll DataStructures.Test\bin\Debug\DataStructures.Test.dll /Parallel /EnableCodeCoverage /ResultsDirectory:codecoverage /Logger:trx
+        run: vstest.console.exe SampleApp.Test\bin\Debug\SampleApp.Test.dll Algorithms.Test\bin\Debug\Algorithms.Test.dll DataStructures.Test\bin\Debug\DataStructures.Test.dll /Parallel /EnableCodeCoverage /ResultsDirectory:codecoverage /Logger:html
 
       - name: Download code coverage
         uses: actions/upload-artifact@v2
