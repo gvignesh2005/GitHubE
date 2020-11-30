@@ -46,5 +46,7 @@ jobs:
       - name: Create nuget package for SampleApp
         run: nuget pack SampleApp 
       
-      - name: Publish the package
-        run: dotnet nuget push *.nupkg
+      - name: Publish Nuget to GitHub registry
+        run: dotnet nuget push *.nupkg -k ${GITHUB_TOKEN} -s https://nuget.pkg.github.com/IrfanSyed-PSC/index.json --skip-duplicate --no-symbols 
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
