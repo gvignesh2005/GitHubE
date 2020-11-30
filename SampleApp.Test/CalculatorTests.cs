@@ -15,5 +15,11 @@ namespace SampleApp.Test
 			Assert.AreEqual(20, calc.Multiply());
 			Assert.AreEqual(1, calc.Divide());
 		}
+
+		[TestMethod]
+		public void testOPeration()
+		{
+			Assert.IsTrue(true);
+		}
 	}
 }
