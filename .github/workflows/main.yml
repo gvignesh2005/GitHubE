@@ -57,7 +57,7 @@ jobs:
             {
             # execute the CodeCoverage.exe command
             $output=$("/output:($coverageresult/($file.BaseName).coveragexml")
-            Start-Process "codecoverage.exe" -ArgumentList "analyze,$output,$file"  
+            Start-Process -FilePath "codecoverage.exe" -ArgumentList "analyze,$output,$file"  
             }
             
       - name: Download code coverage
