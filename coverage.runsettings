@@ -18,7 +18,7 @@
             <!-- Match assembly file paths: -->
             <ModulePaths>
               <Include>
-                <ModulePath>SampleApp\bin\Release\SampleApp.dll</ModulePath>
+                 <ModulePath>.*\.dll$</ModulePath>
               </Include>
             </ModulePaths>
 
