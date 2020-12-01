@@ -56,4 +56,4 @@ jobs:
         run: nuget pack SampleApp
 
       - name: Publish nuget package
-        run: nuget push *.nukpg -Source "SampleApp"
+        run: nuget push SampleApp.1.0.0.nupkg -Source "SampleApp"
