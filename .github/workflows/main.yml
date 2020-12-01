@@ -43,11 +43,28 @@ jobs:
       - name: Run all Unit Tests for SampleApp
         run: vstest.console.exe SampleApp.Test\bin\Debug\SampleApp.Test.dll Algorithms.Test\bin\Debug\Algorithms.Test.dll DataStructures.Test\bin\Debug\DataStructures.Test.dll --collect:"Code Coverage" /Parallel /EnableCodeCoverage /ResultsDirectory:codecoverage /Logger:trx  /Settings:coverage.runsettings
 
+      - name: Analyze the coverage report
+        run: | 
+            $coverageresult="report";
+            $coveragaraw="coveragaraw";
+
+            mkdir $coveragaraw;
+            mkdir $coverageresult;
+
+            Get-ChildItem .\codecoverage -recurse -force -filter "*.coverage" | Copy-Item -destination $coveragaraw
+
+            foreach($file in Get-ChildItem $coveragaraw)
+            {
+            # execute the CodeCoverage.exe command
+            $output=$("/output:($coverageresult/($file.BaseName).coveragexml")
+            Start-Process "codecoverage.exe" -ArgumentList "analyze,$output,$file"  
+            }
+            
       - name: Download code coverage
         uses: actions/upload-artifact@v2
         with:
-           name: codecoverage
-           path: codecoverage
+           name: report
+           path: report
      
       - name: Create nuget package
         run: nuget pack SampleApp
