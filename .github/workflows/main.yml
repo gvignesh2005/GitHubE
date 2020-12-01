@@ -52,5 +52,5 @@ jobs:
       - name: Create nuget package
         run: nuget pack SampleApp
 
-      - name: Publish nuget to GitHub registry
-        run: dotnet nuget push *.nupkg --source https://nuget.pkg.github.com/IrfanSyed-PSC --api-key ${{github.token}} --skip-duplicate --no-symbols true
+     # - name: Publish nuget to GitHub registry
+     #   run: dotnet nuget push *.nupkg --source https://nuget.pkg.github.com/IrfanSyed-PSC --api-key ${{github.token}} --skip-duplicate --no-symbols true
