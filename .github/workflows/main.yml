@@ -49,5 +49,11 @@ jobs:
            name: codecoverage
            path: codecoverage
      
+      - name: Add GitHub to nuget package
+        run: nuget source Add -Name "SampleApp" -Source "https://nuget.pkg.github.com/IrfanSyed-PSC/index.json" -UserName IrfanSyed-PSC -Password ${{secrets.GITHUB_TOKEN}}
+
       - name: Create nuget package
         run: nuget pack SampleApp
+
+      - name: Publish nuget package
+        run: nuget push *.nukpg -Source "SampleApp"
