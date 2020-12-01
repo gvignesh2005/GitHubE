@@ -36,8 +36,7 @@ jobs:
       
      
       - name: Analyze the coverage report
-        run: | 
-             Start-Process -FilePath "CodeCoverage.exe"  
+        run: CodeCoverage.exe  
             
             
       - name: Download code coverage
