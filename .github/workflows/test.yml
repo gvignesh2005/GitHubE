@@ -40,5 +40,7 @@ jobs:
         id: vstest-exe
       
       - name: Set vstest.console.env
-        run:  powershell.exe Get-Command vstest.console.exe
+        run:  |
+              $vstest=Get-Command vstest.console.exe
+        shell: powershell
       
