@@ -36,9 +36,7 @@ jobs:
    
       - name: Choco install dotcover
         run:  choco install dotcover -y
-        
-      - name: Download code coverage
-        uses: actions/upload-artifact@v2
-        with:
-           name: chocozip
-           path: C:\ProgramData\chocolatey
+      
+      - name: Get all libraries in choco
+        run: dir C:\ProgramData\chocolatey\lib
+      
