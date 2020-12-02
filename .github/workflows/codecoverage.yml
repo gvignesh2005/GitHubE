@@ -45,13 +45,14 @@ jobs:
      
       - name: Run coverage
         run: | 
-              $files=Get-ChildItem .\GitHubE -recurse -force -filter "*.Test.dll" | Get-Unique
+              $files=Get-ChildItem $GITHUB_WORKSPACE -recurse -force -filter "*.Test.dll" | Get-Unique
               
               $testlist="";
               foreach ($file in $files)
               { 
                 $testlist+=$file.FullName + " ";
               }
+              echo "testlist is $testlist"
               $testlist="SampleApp.Test\bin\Debug\SampleApp.Test.dll";
               $dotcoverExe=Get-ChildItem dotcover -recurse -force -filter "dotcover.exe" | Get-Unique
               $vstestExe=Get-Command vstest.console.exe | Select -expandproperty Source
