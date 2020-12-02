@@ -56,17 +56,17 @@ jobs:
               
       - name: Run CodeCoverage
         run: | 
-              $files=Get-ChildItem $GITHUB_WORKSPACE -recurse -force -filter "*.Test\bin\Debug\*.Test.dll" | Get-Unique
+              $files=dir "$GITHUB_WORKSPACE\*.Test\bin\Debug\*.Test.dll" | Get-Unique
               
               $testlist="";
               foreach ($file in $files)
               { 
                 $testlist+=$file.FullName + " ";
               }
-              echo "testlist is $testlist"
-              $testlist="SampleApp.Test\obj\Debug\SampleApp.Test.dll Algorithms.Test\obj\Debug\Algorithms.Test.dll"
+              #$testlist="SampleApp.Test\obj\Debug\SampleApp.Test.dll Algorithms.Test\obj\Debug\Algorithms.Test.dll"
               $dotcoverExe=Get-ChildItem dotcover -recurse -force -filter "dotcover.exe" | Get-Unique
               $vstestExe=Get-Command vstest.console.exe | Select -expandproperty Source
+              echo "testlist is $testlist"
               Start-Process "dotcover.exe" -ArgumentList "cover /TargetExecutable=`"$vstestExe`" /TargetArguments=$testlist /TargetWorkingDir=$PWD /Output=`"output/coverage.html`" /ReportType=`"HTML`"" -NoNewWindow -Wait
               
      
