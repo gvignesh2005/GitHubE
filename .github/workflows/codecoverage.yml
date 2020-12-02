@@ -21,7 +21,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-2016]
+        os: [windows-latest]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -52,5 +52,5 @@ jobs:
               
               $dotcoverExe=Get-ChildItem dotcover -recurse -force -filter "dotcover.exe" | Get-Unique
               $vstestExe=Get-Command vstest.console.exe 
-              echo "executing $vstestExe on $dotcoverExe.Source"
-              Start-Process $dotcoverExe.Source -ArgumentList "analyze,--TargetExecutable,$vstestExec.Source,--TargetArguments,$testlist,--TargetWorkingDir,$PWD"
+              echo "executing $vstestExe on $dotcoverExe"
+              Start-Process $dotcoverExe -ArgumentList "analyze,--TargetExecutable,$vstestExec.Source,--TargetArguments,$testlist,--TargetWorkingDir,$PWD"
