@@ -37,10 +37,10 @@ jobs:
       - name: Install dotcover
         uses: crazy-max/ghaction-chocolatey@v1.4.0
         with:
-           args: install dotcover --pre 
+           args: install dotcover
            
       - name: dotcover help
-        run: dotcover
+        run: dotCover.exe
             
       - name: Restore all nuget packages for the solution
         run: nuget restore SampleApp.sln
@@ -58,7 +58,7 @@ jobs:
                 $testlist+=$file.FullName + " ";
               }
               
-              $dotcoverExe=Get-Command dotcover.exe
+              $dotcoverExe=Get-Command dotCover.exe
               $vstestExe=Get-Command vstest.console.exe 
               echo "executing $vstestExe on $dotcoverExe"
               Start-Process $dotcoverExe.Source -ArgumentList "analyze,--TargetExecutable,$vstestExec.Source,--TargetArguments,$testlist,--TargetWorkingDir,$PWD"
