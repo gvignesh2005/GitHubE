@@ -34,14 +34,39 @@ jobs:
       - name: Setup VSTest Path
         uses: darenm/Setup-VSTest@v1
       
-      - name: Restore all nuget packages for the solution
-        run: nuget restore SampleApp.sln
+      - name: Restore nuget packages for the avaiable solutions
+        run: |
+              $solutions=Get-ChildItem $GITHUB_WORKSPACE -recurse -force -filter "*.sln" | Get-Unique
+              foreach ($solution in $solutions)
+              {
+                nuget restore $soluton
+              }
+              
       
-      - name: Build SampleApp solution
-        run: msbuild SampleApp.sln
+      - name: Build Solutions
+        run: |
+             $solutions=Get-ChildItem $GITHUB_WORKSPACE -recurse -force -filter "*.sln" | Get-Unique
+             foreach($solution in $solutions)
+             {
+                msbuild $solution
+             }
+              
+      - name: Run Unit tests
+        run: | 
+              $files=dir "*.Test\bin\Debug\*.Test.dll" | Get-Unique
+              
+              $testlist="";
+              foreach ($file in $files)
+              { 
+                $testlist+=$file.FullName + " ";
+              }
+              
+              Start-Process "vstest.console.exe" -ArgumentList "$testlist /Parallel /Settings:coverage.runsettings" -NoNewWindow -Wait
+              
+
      
-      - name: Run all Unit Tests for SampleApp
-        run: vstest.console.exe SampleApp.Test\bin\Debug\SampleApp.Test.dll Algorithms.Test\bin\Debug\Algorithms.Test.dll DataStructures.Test\bin\Debug\DataStructures.Test.dll --collect:"Code Coverage" /Parallel  /Settings:coverage.runsettings
+      #- name: Run all Unit Tests for SampleApp
+      # run: vstest.console.exe SampleApp.Test\bin\Debug\SampleApp.Test.dll Algorithms.Test\bin\Debug\Algorithms.Test.dll DataStructures.Test\bin\Debug\DataStructures.Test.dll --collect:"Code Coverage" /Parallel  /Settings:coverage.runsettings
 
       - name: Create nuget package
         run: nuget pack SampleApp
