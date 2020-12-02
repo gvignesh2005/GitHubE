@@ -54,4 +54,8 @@ jobs:
               { 
                 $testlist+=$file.FullName + " ";
               }
-              Start-Process "dotcover.exe" -ArgumentList "analyze,--TargetExecutable,vstest.console.exe,--TargetArguments,$testlist,--TargetWorkingDir,$PWD"
+              
+              $dotcoverExe=Get-Command dotcover.exe
+              $vstestExe=Get-Command vstest.console.exe 
+              echo "executing $vstestExe on $dotcoverExe"
+              Start-Process $dotcoverExe.Source -ArgumentList "analyze,--TargetExecutable,$vstestExec.Source,--TargetArguments,$testlist,--TargetWorkingDir,$PWD"
