@@ -34,6 +34,9 @@ jobs:
       - name: Setup VSTest Path
         uses: darenm/Setup-VSTest@v1
       
+      - name: Install dotcover
+        run: choco install dotcover-cli -y
+      
       - name: Restore all nuget packages for the solution
         run: nuget restore SampleApp.sln
       
@@ -52,5 +55,4 @@ jobs:
               
               $dotcoverExe=Get-ChildItem dotcover -recurse -force -filter "dotcover.exe" | Get-Unique
               $vstestExe=Get-Command vstest.console.exe | Select -expandproperty Source
-              echo "executing $vstestExe on $dotcoverExe"
-              Start-Process "$dotcoverExe" -ArgumentList "cover /TargetExecutable=`"$vstestExe`" /TargetArguments=$testlist /TargetWorkingDir=$PWD /Output=`"report.html`" /ReportType=`"HTML`"" -NoNewWindow -Wait
+              Start-Process "dotcover.exe" -ArgumentList "cover /TargetExecutable=`"$vstestExe`" /TargetArguments=$testlist /TargetWorkingDir=$PWD /Output=`"report.html`" /ReportType=`"HTML`"" -NoNewWindow -Wait
