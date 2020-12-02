@@ -47,8 +47,9 @@ jobs:
      
       - name: Run coverage
         run: | 
-              $files=Get-ChildItem .\GitHubE -recurse -force -filter "*.Test.dll" | Get-Unique $testlist="";
+              $files=Get-ChildItem .\GitHubE -recurse -force -filter "*.Test.dll" | Get-Unique
               
+              $testlist="";
               foreach ($file in $files)
               { 
                 $testlist+=$file.FullName + " ";
