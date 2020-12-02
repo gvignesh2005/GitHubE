@@ -40,17 +40,5 @@ jobs:
       - name: Build SampleApp solution
         run: msbuild SampleApp.sln
      
-      - name: Run coverage
-        run: | 
-              $files=Get-ChildItem .\GitHubE -recurse -force -filter "*.Test.dll" | Get-Unique
-              
-              $testlist="";
-              foreach ($file in $files)
-              { 
-                $testlist+=$file.FullName + " ";
-              }
-              
-              $dotcoverExe=Get-ChildItem dotcover -recurse -force -filter "dotcover.exe" | Get-Unique
-              $vstestExe=Get-Command vstest.console.exe 
-              echo "executing $vstestExe on $dotcoverExe"
-              Start-Process $dotcoverExe -ArgumentList "analyze,--TargetExecutable,$vstestExec.Source,--TargetArguments,$testlist,--TargetWorkingDir,$PWD"
+      - name: Run Coverage
+        run: dotcover\dotcover.exe analyze --TargetExecutable vstest.console.exe --TargetArguments SampleApp.Test\bin\Debug\SampleApp.Test.dll --TargetWorkingDir SampleApp.Test\bin\Debug --output coverage.html --ReportType HTML
