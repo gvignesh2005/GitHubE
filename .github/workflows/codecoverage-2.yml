@@ -79,9 +79,4 @@ jobs:
            targetdir: 'coveragereportHTML' # REQUIRED # The directory where the generated report should be saved.
            reporttypes: 'HTML' # The output formats and scope (separated by semicolon) Values: Badges, Clover, Cobertura, CsvSummary, Html, HtmlChart, HtmlInline, HtmlInline_AzurePipelines, HtmlInline_AzurePipelines_Dark, HtmlSummary, JsonSummary, Latex, LatexSummary, lcov, MHtml, PngChart, SonarQube, TeamCitySummary, TextSummary, Xml, XmlSummary
            title: 'SampleApp Code Coverage' 
-      
-      - name: Download CodeCoverage Report using ReportGenerator
-        uses: actions/upload-artifact@v2
-        with:
-           name: coveragereport
-           path: coveragereportHTML   
+         
