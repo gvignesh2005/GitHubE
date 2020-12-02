@@ -44,12 +44,11 @@ jobs:
         run: msbuild SampleApp.sln
      
       - name: Run coverage
-        run: |
-	     $files=Get-ChildItem .\GitHubE -recurse -force -filter "*.Test.dll" | Get-Unique
-
-	     $testlist="";
-	     foreach ($file in $files)
-	     {
-	     $testlist+=$file.FullName + " ";
-	     }
-	     Start-Process "dotcover.exe" -ArgumentList "analyze,--TargetExecutable,vstest.console.exe,--TargetArguments,$testlist,--TargetWorkingDir,$PWD
+        run: | 
+              $files=Get-ChildItem .\GitHubE -recurse -force -filter "*.Test.dll" | Get-Unique $testlist="";
+              
+              foreach ($file in $files)
+              { 
+                $testlist+=$file.FullName + " ";
+              }
+              Start-Process "dotcover.exe" -ArgumentList "analyze,--TargetExecutable,vstest.console.exe,--TargetArguments,$testlist,--TargetWorkingDir,$PWD
