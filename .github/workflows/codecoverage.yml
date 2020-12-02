@@ -38,7 +38,8 @@ jobs:
         run: choco install dotcover -y
          
       - name: dotcover help
-        run: C:\ProgramData\chocolatey\bin\dotCover.exe
+        run: |
+             Get-ChildItem C:\ -recurse -force -filter "dotcover.exe" -ErrorAction Ignore | Select-Object -First 1 
             
       - name: Restore all nuget packages for the solution
         run: nuget restore SampleApp.sln
