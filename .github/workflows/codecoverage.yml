@@ -38,6 +38,9 @@ jobs:
         uses: crazy-max/ghaction-chocolatey@v1.4.0
         with:
            args: install dotcover --pre 
+           
+      - name: dotcover help
+        run: dotcover
             
       - name: Restore all nuget packages for the solution
         run: nuget restore SampleApp.sln
