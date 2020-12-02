@@ -56,7 +56,7 @@ jobs:
               
       - name: Run CodeCoverage
         run: | 
-              $files=Get-ChildItem $GITHUB_WORKSPACE -recurse -force -filter "*.Test.dll" | Get-Unique
+              $files=Get-ChildItem $GITHUB_WORKSPACE -recurse -force -filter "*.Test\bin\Debug\*.Test.dll" | Get-Unique
               
               $testlist="";
               foreach ($file in $files)
