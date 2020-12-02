@@ -1,0 +1,12 @@
+﻿x64.dbg/JetBrains.Process.Elevator.dll   jetbrains.process.elevator.dll/5f6d99f7559000/jetbrains.process.elevator.dl_
+x64.dbg/JetBrains.Etw.Controller.dll     jetbrains.etw.controller.dll/5f6d9a2b962000/jetbrains.etw.controller.dl_
+x64.dbg/JetBrains.Etw.Collector.Host.exe jetbrains.etw.collector.host.exe/5f6d9a4b670000/jetbrains.etw.collector.host.ex_
+x64.dbg/JetBrains.Etw.Collector.exe      jetbrains.etw.collector.exe/5f6d9b961f05000/jetbrains.etw.collector.ex_
+x64.dbg/JetBrains.Dpa.Collector.exe      jetbrains.dpa.collector.exe/5f6d9bc9882000/jetbrains.dpa.collector.ex_
+x64.dbg/mono-profiler-jb.dll             mono-profiler-jb.dll/5f6d9c42c87000/mono-profiler-jb.dl_
+x64.dbg/JetBrains.Process.Elevator.pdb   jetbrains.process.elevator.pdb/8b1c340b9b32423c8af1c8718ff804b91/jetbrains.process.elevator.pd_
+x64.dbg/JetBrains.Etw.Controller.pdb     jetbrains.etw.controller.pdb/ebeced2d0a4945a682fc64dc63201cbf1/jetbrains.etw.controller.pd_
+x64.dbg/JetBrains.Etw.Collector.Host.pdb jetbrains.etw.collector.host.pdb/d96901443af74cd390fb0c18058060631/jetbrains.etw.collector.host.pd_
+x64.dbg/JetBrains.Etw.Collector.pdb      jetbrains.etw.collector.pdb/f6fa2b021ad145b7bf12cb85752184fd1/jetbrains.etw.collector.pd_
+x64.dbg/JetBrains.Dpa.Collector.pdb      jetbrains.dpa.collector.pdb/da40452ae98b44749149159333debcd51/jetbrains.dpa.collector.pd_
+x64.dbg/mono-profiler-jb.pdb             mono-profiler-jb.pdb/c5a4f1716adb4a6480547d22e40633351/mono-profiler-jb.pd_
