@@ -53,4 +53,4 @@ jobs:
               $dotcoverExe=Get-ChildItem dotcover -recurse -force -filter "dotcover.exe" | Get-Unique
               $vstestExe=Get-Command vstest.console.exe | Select -expandproperty Source
               echo "executing $vstestExe on $dotcoverExe"
-              Start-Process "$dotcoverExe" -ArgumentList "analyze --TargetExecutable $vstestExe --TargetArguments $testlist --TargetWorkingDir $PWD" -NoNewWindow -Wait
+              Start-Process "$dotcoverExe" -ArgumentList "analyze --TargetExecutable vstest.console.exe --TargetArguments $testlist --TargetWorkingDir $PWD" -NoNewWindow -Wait
