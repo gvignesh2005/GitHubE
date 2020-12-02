@@ -37,6 +37,6 @@ jobs:
       - name: Set vstest.console.env
         run:  |
               $mval=Get-Command vstest.console.exe | Select-Object Source
-              echo "mval is $mval"
+              echo "mval is $mval.Source"
         shell: powershell
       
