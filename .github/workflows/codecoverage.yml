@@ -40,14 +40,14 @@ jobs:
       - name: Build SampleApp solution
         run: msbuild SampleApp.sln
       
-      - name: Set vstest.console env
+      - name: Set vstest.console.env
         run: |
-               $vstestExe=Get-Command vstest.console.exe
-               echo '::set-env name=vstestExe::${vstestExe}'
-               echo "vstestExe=$vstestExe" >> $GITHUB_ENV
-               
+              $vstestExe=Get-Command vstest.console.exe
+              echo '::set-output name=VSTEST_EXEC::$vstestExe'
+        id: vstest-exe
+      
       - name: Get vstest.console variable 
-        run: echo "${env.vstestExe}"
-     
+        run: echo "${{ steps.vstest-exe.outputs.VSTEST_EXEC }}"
+           
       - name: Run Coverage
-        run: dotcover\dotcover.exe analyze --TargetExecutable vstest.console.exe --TargetArguments SampleApp.Test\bin\Debug\SampleApp.Test.dll --TargetWorkingDir SampleApp.Test\bin\Debug --output coverage.html --ReportType HTML
+        run: dotcover\dotcover.exe analyze --TargetExecutable "{{ steps.vstest-exe.outputs.VSTEST_EXEC }}" --TargetArguments SampleApp.Test\bin\Debug\SampleApp.Test.dll --TargetWorkingDir SampleApp.Test\bin\Debug --output coverage.html --ReportType HTML
