@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Code Coverage
+name: Code Coverage2
 
 # Controls when the action will run. 
 on:
@@ -51,6 +51,6 @@ jobs:
               }
               
               $dotcoverExe=Get-ChildItem dotcover -recurse -force -filter "dotcover.exe" | Get-Unique
-              $vstestExe=Get-Command vstest.console.exe | Select Source
-              echo "executing $(vstestExe.Source) on $(dotcoverExe.Source)"
-              Start-Process $dotcoverExe.Source -ArgumentList "analyze,--TargetExecutable,$(vstestExe.Source),--TargetArguments,$(testlist),--TargetWorkingDir,$(PWD)" -NoNewWindow -Wait
+              $vstestExe=Get-Command vstest.console.exe | Select -expandproperty Source
+              echo "executing $vstestExe on $dotcoverExe.Source"
+              Start-Process $dotcoverExe.Source -ArgumentList "analyze,--TargetExecutable,$vstestExe,--TargetArguments,$(testlist),--TargetWorkingDir,$PWD" -NoNewWindow -Wait
