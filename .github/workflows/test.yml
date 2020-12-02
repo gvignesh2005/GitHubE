@@ -35,6 +35,8 @@ jobs:
         uses: darenm/Setup-VSTest@v1
    
       - name: Set vstest.console.env
-        run:  Get-Command vstest.console.exe | Select-Object Source
+        run:  |
+              $mval=Get-Command vstest.console.exe | Select-Object Source
+              echo "mval is $mval"
         shell: powershell
       
