@@ -67,7 +67,7 @@ jobs:
               $dotcoverExe=Get-ChildItem dotcover -recurse -force -filter "dotcover.exe" | Get-Unique
               $vstestExe=Get-Command vstest.console.exe | Select -expandproperty Source
               echo "testlist is $testlist"
-              Start-Process "dotcover.exe" -ArgumentList "cover /TargetExecutable=`"$vstestExe`" /TargetArguments=$testlist /TargetWorkingDir=$PWD /Output=`"output/coverage.html`" /ReportType=`"HTML`"" -NoNewWindow -Wait
+              Start-Process "dotcover.exe" -ArgumentList "cover /TargetExecutable=`"$vstestExe`" /TargetArguments=`"$testlist`" /TargetWorkingDir=$PWD /Output=`"output/coverage.html`" /ReportType=`"HTML`"" -NoNewWindow -Wait
               
      
       - name: Download CodeCoverage Report
