@@ -38,12 +38,23 @@ jobs:
         run: choco install dotcover-cli -y
       
       - name: Restore all nuget packages for the solution
-        run: nuget restore SampleApp.sln
+        run: |
+              $solutions=Get-ChildItem $GITHUB_WORKSPACE -recurse -force -filter "*.sln" | Get-Unique
+              foreach ($solution in $solutions)
+              {
+                nuget restore $soluton
+              }
+              
       
       - name: Build SampleApp solution
-        run: msbuild SampleApp.sln
-     
-      - name: Run coverage
+        run: |
+             $solutions=Get-ChildItem $GITHUB_WORKSPACE -recurse -force -filter "*.sln" | Get-Unique
+             foreach($solution in $solutions)
+             {
+                msbuild $solution
+             }
+              
+      - name: Run CodeCoverage
         run: | 
               $files=Get-ChildItem $GITHUB_WORKSPACE -recurse -force -filter "*.Test.dll" | Get-Unique
               
@@ -52,8 +63,6 @@ jobs:
               { 
                 $testlist+=$file.FullName + " ";
               }
-              echo "testlist is $testlist"
-              $testlist="SampleApp.Test\bin\Debug\SampleApp.Test.dll";
               $dotcoverExe=Get-ChildItem dotcover -recurse -force -filter "dotcover.exe" | Get-Unique
               $vstestExe=Get-Command vstest.console.exe | Select -expandproperty Source
               Start-Process "dotcover.exe" -ArgumentList "cover /TargetExecutable=`"$vstestExe`" /TargetArguments=$testlist /TargetWorkingDir=$PWD /Output=`"output/coverage.html`" /ReportType=`"HTML`"" -NoNewWindow -Wait
