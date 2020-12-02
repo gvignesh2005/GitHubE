@@ -52,7 +52,7 @@ jobs:
               { 
                 $testlist+=$file.FullName + " ";
               }
-              $testlist="SampleApp.Test\bin\Debug\SampleApp.Test.dll Algorithms.Test\bin\Debug\Algorithms.Test.dll DataStructures.Test\bin\Debug\DataStructures.Test.dll";
+              $testlist="SampleApp.Test\bin\Debug\SampleApp.Test.dll";
               $dotcoverExe=Get-ChildItem dotcover -recurse -force -filter "dotcover.exe" | Get-Unique
               $vstestExe=Get-Command vstest.console.exe | Select -expandproperty Source
               Start-Process "dotcover.exe" -ArgumentList "cover /TargetExecutable=`"$vstestExe`" /TargetArguments=$testlist /TargetWorkingDir=$PWD /Output=`"coverage.html`" /ReportType=`"HTML`"" -NoNewWindow -Wait
