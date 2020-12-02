@@ -40,7 +40,7 @@ jobs:
            args: install dotcover
            
       - name: dotcover help
-        run: C:\ProgramData\chocolatey\bin\dotCover.exe\dotCover.exe
+        run: C:\ProgramData\chocolatey\bin\dotCover.exe
             
       - name: Restore all nuget packages for the solution
         run: nuget restore SampleApp.sln
