@@ -37,9 +37,6 @@ jobs:
       - name: Choco install dotcover
         run:  choco install dotcover -y
         
-      - name: Download stuff
-        run: d
-        
       - name: Download code coverage
         uses: actions/upload-artifact@v2
         with:
