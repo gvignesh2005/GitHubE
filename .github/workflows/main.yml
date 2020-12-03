@@ -68,7 +68,12 @@ jobs:
       #- name: Run all Unit Tests for SampleApp
       # run: vstest.console.exe SampleApp.Test\bin\Debug\SampleApp.Test.dll Algorithms.Test\bin\Debug\Algorithms.Test.dll DataStructures.Test\bin\Debug\DataStructures.Test.dll --collect:"Code Coverage" /Parallel  /Settings:coverage.runsettings
 
-      - name: Nuget Push
-        run: nuget push *.nupkg -source https://github.com/gvignesh2005/GitHubE.git --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate --no-symbols false
+      - name: Nuget pack
+        run: nuget pack SampleApp -p ver=1.0.0
+        
+      - name: Publish Nuget to GitHub registry
+        run: dotnet nuget push SampleApp*.nupkg -k ${GITHUB_TOKEN} -s https://nuget.pkg.github.com/gvignesh2005/index.json --skip-duplicate --no-symbols 
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
      # - name: Publish nuget to GitHub registry
      #   run: dotnet nuget push *.nupkg --source https://nuget.pkg.github.com/IrfanSyed-PSC --api-key ${{github.token}} --skip-duplicate --no-symbols false
