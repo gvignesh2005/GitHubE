@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>SampleApp</id>
+    <version>$ver$</version>
+    <title>app</title>
+    <authors>vgopalak</authors>
+    <owners>vgopalak</owners>
+    <projectUrl>https://github.com/gvignesh2005/GitHubE</projectUrl>
+    <repository type="git" url="https://github.com/gvignesh2005/GitHubE" />
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This is a sample app</description>
+    <copyright>Copyright 2020</copyright>
+  </metadata>
+</package>
