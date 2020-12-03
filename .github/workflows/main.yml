@@ -32,15 +32,7 @@ jobs:
         uses: microsoft/setup-msbuild@v1
       
       - name: Setup VSTest Path
-        uses: darenm/Setup-VSTest@v1
-            
-      
-      - name: Setup .NET Core @ Latest
-        uses: actions/setup-dotnet@v1
-        with:
-          source-url: https://nuget.pkg.github.com/gvignesh2005/index.json
-        env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        uses: darenm/Setup-VSTest@v1            
       
       - name: Restore nuget packages for the avaiable solutions
         run: |
@@ -71,6 +63,22 @@ jobs:
               
               Start-Process "vstest.console.exe" -ArgumentList "$testlist /Parallel /Settings:coverage.runsettings" -NoNewWindow -Wait
               
+  publish-gpr:
+    needs: build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest]
+    steps:
+      - uses: actions/checkout@v2
+        
+      - name: Setup .NET Core @ Latest
+        uses: actions/setup-dotnet@v1
+        with:
+          source-url: https://nuget.pkg.github.com/gvignesh2005/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}        
+      
       - name: Nuget pack
         run: nuget pack SampleApp -p ver=1.0.6
       
