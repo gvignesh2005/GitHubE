@@ -61,7 +61,7 @@ jobs:
                 $testlist+=$file.FullName + " ";
               }
               
-              Start-Process "vstest.console.exe" -ArgumentList "$testlist /Parallel /Settings:coverage.runsettings" -NoNewWindow -Wait\
+              Start-Process "vstest.console.exe" -ArgumentList "$testlist /Parallel /Settings:coverage.runsettings" -NoNewWindow -Wait
               
       - name: Nuget pack
         run: nuget pack SampleApp -p ver=1.0.6
