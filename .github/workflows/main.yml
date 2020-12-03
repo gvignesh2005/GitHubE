@@ -61,19 +61,12 @@ jobs:
                 $testlist+=$file.FullName + " ";
               }
               
-              Start-Process "vstest.console.exe" -ArgumentList "$testlist /Parallel /Settings:coverage.runsettings" -NoNewWindow -Wait
+              Start-Process "vstest.console.exe" -ArgumentList "$testlist /Parallel /Settings:coverage.runsettings" -NoNewWindow -Wait\
               
-
-     
-      #- name: Run all Unit Tests for SampleApp
-      # run: vstest.console.exe SampleApp.Test\bin\Debug\SampleApp.Test.dll Algorithms.Test\bin\Debug\Algorithms.Test.dll DataStructures.Test\bin\Debug\DataStructures.Test.dll --collect:"Code Coverage" /Parallel  /Settings:coverage.runsettings
-
       - name: Nuget pack
-        run: nuget pack SampleApp -p ver=1.0.0
+        run: nuget pack SampleApp -p ver=1.0.6
         
       - name: Publish Nuget to GitHub registry
         run: dotnet nuget push *.nupkg --api-key ${GITHUB_TOKEN} --source https://nuget.pkg.github.com/gvignesh2005/index.json --skip-duplicate --no-symbols 
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-     # - name: Publish nuget to GitHub registry
-     #   run: dotnet nuget push *.nupkg --source https://nuget.pkg.github.com/IrfanSyed-PSC --api-key ${{github.token}} --skip-duplicate --no-symbols false
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
